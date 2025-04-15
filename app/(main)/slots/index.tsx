@@ -12,7 +12,6 @@ export default function Slots() {
           Available Slots
         </Text>
 
-        {/* Date Selection */}
         <ScrollView 
           horizontal 
           showsHorizontalScrollIndicator={false}
