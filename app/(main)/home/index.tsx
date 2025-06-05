@@ -3,7 +3,7 @@ import { Link } from 'expo-router';
 import V from '~/components/V';
 import { Ionicons } from '@expo/vector-icons';
 import HeaderTabs from './../../../components/home/HeaderTabs';
-import CourtCard from '~/components/home/CourtCard';
+import VeneuCard from '~/components/home/VeneuCard';
 const TorailImage = require("../../../assets/torail-cut.jpg")
 const HawarImage = require("../../../assets/hawwar.png")
 const IndoorImage = require("../../../assets/indoor.png")
@@ -12,41 +12,41 @@ const PadbolImage = require("../../../assets/padbol.png")
 export default function Home() {
   return (
     <V>
-      <HeaderTabs title="Welcome, Adham 👋" />
+      <HeaderTabs title="Hi, Adham 👋" />
       <View className='flex flex-col gap-8 pt-8'>
-        <CourtCard
+        <VeneuCard
           image={TorailImage}
           title="Torail Branch"
           numberOfCourts={4}
           onPress={() => {}}
-          routeParams={{ courtId: '1',
+          routeParams={{ veneuId: '1',
             courtImage: TorailImage,
            }}
         />
-        <CourtCard
+        <VeneuCard
           image={HawarImage}
           title="Hawar Branch"
           numberOfCourts={4}
           onPress={() => {}}
-          routeParams={{ courtId: '2', 
+          routeParams={{ veneuId: '2', 
             courtImage: HawarImage,
           }}
         />
-        <CourtCard
+        <VeneuCard
           image={IndoorImage}
           title="Indoor Court, Manoura stadium"
           numberOfCourts={4}
           onPress={() => {}}
-          routeParams={{ courtId: '3',
+          routeParams={{ veneuId: '3',
             courtImage: IndoorImage,
            }}
         />
-        <CourtCard
+        <VeneuCard
           image={PadbolImage}
           title="Padbol Kick"
           numberOfCourts={4}
           onPress={() => {}}
-          routeParams={{ courtId: '4',
+          routeParams={{ veneuId: '4',
             courtImage: PadbolImage,
            }}
         />

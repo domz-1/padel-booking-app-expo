@@ -1,6 +1,6 @@
 import { Tabs } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
-import { ViewStyle, Animated } from 'react-native';
+import { ViewStyle, Animated, View, Text } from 'react-native';
 
 export default function MainLayout() {
   return (
@@ -16,7 +16,11 @@ export default function MainLayout() {
         },
         tabBarStyle: (() => {
           const routeName = route.name;
-          if (routeName.includes('[') || !routeName.endsWith('index') || routeName.includes('subpage')) {
+          if (
+            routeName.includes('[') ||
+            !routeName.endsWith('index') ||
+            routeName.includes('subpage')
+          ) {
             return { display: 'none' } as ViewStyle;
           }
           return {
@@ -42,40 +46,50 @@ export default function MainLayout() {
         tabBarActiveTintColor: '#FFFFFF',
         tabBarInactiveTintColor: 'rgba(255, 255, 255, 0.8)',
         tabBarLabelStyle: {
-          fontSize: 12,
+          fontSize: 10,
           fontWeight: '500',
-          marginTop: 4,
-        },
-        tabBarIconStyle: {
-          marginTop: 4,
         },
         tabBarItemStyle: {
+          justifyContent: 'center',
+          alignItems: 'center',
           paddingTop: 8,
+          paddingBottom: 8,
         },
         tabBarIcon: ({ color, size, focused }) => {
           const iconSize = focused ? 30 : 26;
+          const label = route.name.split('/')[0].replace(/^[a-z]/, (c) => c.toUpperCase()).replace('-', ' ');
           return (
             <Animated.View
               style={{
                 transform: [{ scale: focused ? 1.1 : 1 }],
-              }}
-            >
-              <Ionicons 
+                alignItems: 'center',
+                justifyContent: 'center',
+                flexDirection: 'column',
+              }}>
+              <Ionicons
                 name={getIconName(route.name, focused)}
-                size={iconSize} 
-                color={color} 
+                size={iconSize}
+                color={color}
                 style={{ opacity: focused ? 1 : 0.8 }}
               />
+              <Text
+                style={{
+                  color: focused ? '#FFFFFF' : 'rgba(255, 255, 255, 0.8)',
+                  fontSize: 12,
+                  fontWeight: '500',
+                  marginTop: 4,
+                }}>
+                {label}
+              </Text>
             </Animated.View>
           );
         },
-      })}
-    >
+        tabBarLabel: () => null,
+      })}>
       <Tabs.Screen
         name="home/index"
         options={{
           title: 'Home',
-          tabBarLabel: 'Home',
         }}
       />
       <Tabs.Screen

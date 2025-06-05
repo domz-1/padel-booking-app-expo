@@ -3,7 +3,7 @@ import React, { Children } from 'react'
 
 const V = ({children}: {children: React.ReactNode}) => {
   return (
-    <ScrollView className="flex-1 bg-white">
+    <ScrollView className="flex-1 bg-white mb-8">
       <View className="bg-whit flex p-8 pb-[48px] pt-12">{children}</View>
     </ScrollView>
   );
